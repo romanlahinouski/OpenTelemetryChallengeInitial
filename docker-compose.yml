@@ -18,24 +18,6 @@ services:
           - MySQL_Server=192.168.0.178
     volumes: 
           - "${HOME}/.aspnet/https:/root/.aspnet/https/"    
-  restaurantmanagementapi:
-    image: 46105558198586288857/restaurantguide:restaurantmanagement
-    deploy:
-      replicas: 6
-      placement:
-        max_replicas_per_node: 10
-      update_config:
-        parallelism: 2
-        delay: 10s
-      restart_policy:
-        condition: on-failure
-    ports: 
-          - 6001:6001/tcp
-    environment: 
-          - ASPNETCORE_ENVIRONMENT=Development
-          - MySQL_Server=192.168.0.178         
-    volumes: 
-          - "${HOME}/.aspnet/https:/root/.aspnet/https/"
   gatewayapi:
     image: 46105558198586288857/restaurantguide:gateway
     deploy:
