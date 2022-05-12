@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-deployment
+  labels:
+    app: gw
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: gw
+  template:
+    metadata:
+      labels:
+        app: gw
+    spec:
+      containers:
+      - name: gateway
+        image: 46105558198586288857/restaurantguide:gateway
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 9090

@@ -1,0 +1,17 @@
+{
+  "controller": {
+    "host": "rdc.saas.appdynamics.com",
+    "port": 443,
+    "account": "rdc",
+    "password": "nnischowp23r",
+    "ssl": true,
+    "enable_tls12": true
+  },
+  "application": {
+    "name": "Roman_NetCore",
+    "tier": "OrderManagement"
+  },
+  "instrumentors": {
+    "customCorrelationConfig": "custom-correlation.xml"
+  }
+}

@@ -1,0 +1,24 @@
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS base
+WORKDIR /app
+EXPOSE 8000
+
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet restore "GuestManagement.API/GuestManagement.API.csproj"
+RUN dotnet publish "GuestManagement.API/GuestManagement.API.csproj" -c Release -o /app/
+
+RUN apt-get update 
+RUN apt-get install unzip
+RUN unzip GuestManagement.API/AppDynamics-DotNetCore-linux-x64-21.8.0.zip -d /app/
+
+
+FROM base AS final
+
+WORKDIR /app
+COPY --from=build /src/SetEnv.sh .
+RUN chmod +x SetEnv.sh
+COPY --from=build /src/GuestManagement.p12/ .
+COPY --from=build /app/ .
+ENTRYPOINT ["dotnet", "GuestManagement.API.dll"]
+

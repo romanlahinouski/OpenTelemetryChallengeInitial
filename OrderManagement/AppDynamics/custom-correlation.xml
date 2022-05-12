@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<activities> 
+  <consumer>
+    <instrumentation>
+      <class-name>RestaurantGuide.OrderManagement.OrderCreationHandler</class-name>
+      <method-name>Run</method-name>
+      <match-type>MATCHES_CLASS</match-type>
+    </instrumentation>
+    <correlation>
+      <payload-pointer name="ServiceBusPayload">
+        <data-gatherer-type>POSITION</data-gatherer-type>
+        <position>0</position>
+        <getter-chain>this</getter-chain>
+        <transformer-type>GETTER_METHODS</transformer-type>
+      </payload-pointer>
+      <payload-operation>
+        <access-type>method</access-type>
+        <access-method>Split("\"SingularityHeader\":")[1].Split("\"")[1]</access-method>
+      </payload-operation>
+    </correlation>
+  </consumer>
+</activities>

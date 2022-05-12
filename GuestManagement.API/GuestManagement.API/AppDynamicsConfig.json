@@ -1,0 +1,74 @@
+{
+  "log": [
+    {
+      "filename": "WarnLog",
+      "level": "DEBUG",
+      "channel": "*"
+    },
+    {
+      "filename": "Profiler",
+      "level": "DEBUG",
+      "directory": "/tmp/appd/logs",
+      "channel": "appd.agent.Profiler"
+    },
+    {
+      "filename": "BusinessTransactionsLog",
+      "level": "DEBUG",
+      "channel": "com.appdynamics.BusinessTransactions"
+    },
+    {
+      "filename": "RESTHearbeat",
+      "level": "INFO",
+      "channel": "com.appdynamics.REST.HeartBeatLog"
+    },
+    {
+      "filename": "ByteCode",
+      "level": "DEBUG",
+      "channel": "com.appdynamics.bci.*"
+    },
+    {
+      "filename": "RESTCommunications",
+      "level": "INFO",
+      "channel": "com.appdynamics.REST.*"
+    },
+    {
+      "filename": "RESTCommunications",
+      "level": "INFO",
+      "channel": "com.appdynamics.METRICS.MetricSender"
+    },
+    {
+      "filename": "SamplingTrace",
+      "level": "DEBUG",
+      "channel": "com.appdynamics.ManagedAgentAPI.DumpStats"
+    },
+    {
+      "filename": "CustomCorrelation",
+      "level": "DEBUG",
+      "channel": "com.appdynamics.ee.agent.appagent.services.transactionmonitor.*"
+    },
+    {
+      "filename": "Analytics",
+      "level": "DEBUG",
+      "channel": "com.appdynamics.ee.service.analytics.Analytics",
+      "max_size": 31457280,
+      "max_files": 2,
+      "directory": "./logs",
+      "exclude_tid": false
+    },
+    {
+      "filename": "Agent",
+      "level": "INFO",
+      "channel": "*"
+    }
+  ],  
+  
+  "instrumentors": {
+      "customCorrelationConfig": "custom-correlation.xml",
+      "disable": [
+        "ServiceFabricExitInstrumentor","ServiceFabricEntryInstrumentor"
+      ]
+    },
+    "feature": [
+      "FULL_AGENT"
+      ]
+}

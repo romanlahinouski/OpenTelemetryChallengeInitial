@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<activities> 
+  <producer>
+    <instrumentation>
+      <class-name>GuestManagement.Infrastructure.Guests.Orders.OrderManagementService</class-name>
+      <method-name>SetDownstreamCorrelation</method-name>
+      <match-type>MATCHES_CLASS</match-type>
+    </instrumentation>
+    <identifiers>
+      <identifier name="ServiceBusCall">
+        <data-gatherer-type>INVOKED</data-gatherer-type>
+        <getter-chain>this.Message</getter-chain>
+        <transformer-type>GETTER_METHODS</transformer-type>
+      </identifier>
+    </identifiers>
+    <correlation>
+      <payload-pointer name="ServiceBusPayload">
+        <data-gatherer-type>INVOKED</data-gatherer-type>
+        <getter-chain>this.Message</getter-chain>
+        <transformer-type>GETTER_METHODS</transformer-type>
+      </payload-pointer>
+      <payload-operation>
+        <access-type>field</access-type>
+        <field-name>SingularityHeader</field-name>
+      </payload-operation>
+    </correlation>
+  </producer>
+</activities>

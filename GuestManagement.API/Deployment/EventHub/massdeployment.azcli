@@ -1,0 +1,6 @@
+#admin password ZzqnDPxOfZ26
+
+resourceGroup="$(az group list  --query '[].{Name:name}' --output "tsv" )"
+
+az deployment group create --resource-group $resourceGroup --template-file ./azuredeploy.json --parameters ./azuredeploy.parameters.json
+

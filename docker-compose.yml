@@ -1,0 +1,72 @@
+version: "3.9"
+services:
+  guestmanagementapi:
+    image: 46105558198586288857/restaurantguide:guestmanagement
+    deploy:
+      replicas: 6
+      placement:
+        max_replicas_per_node: 10
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    ports:
+          - 8001:8001/tcp
+    environment: 
+          - ASPNETCORE_ENVIRONMENT=Development
+          - MySQL_Server=192.168.0.178
+    volumes: 
+          - "${HOME}/.aspnet/https:/root/.aspnet/https/"    
+  restaurantmanagementapi:
+    image: 46105558198586288857/restaurantguide:restaurantmanagement
+    deploy:
+      replicas: 6
+      placement:
+        max_replicas_per_node: 10
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    ports: 
+          - 6001:6001/tcp
+    environment: 
+          - ASPNETCORE_ENVIRONMENT=Development
+          - MySQL_Server=192.168.0.178         
+    volumes: 
+          - "${HOME}/.aspnet/https:/root/.aspnet/https/"
+  gatewayapi:
+    image: 46105558198586288857/restaurantguide:gateway
+    deploy:
+      replicas: 2
+      placement:
+        max_replicas_per_node: 10
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure 
+    ports:
+          - 9001:9001/tcp
+    environment: 
+          - ASPNETCORE_ENVIRONMENT=Development
+    volumes: 
+          - "${HOME}/.aspnet/https:/root/.aspnet/https/"
+  machineagent:
+    image: 46105558198586288857/restaurantguide:machineagent
+    deploy:
+      replicas: 1
+      placement:
+        max_replicas_per_node: 10
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure 
+networks:
+  default:
+    external:
+      name: restaurantnet-overlay
+      
+                                  
