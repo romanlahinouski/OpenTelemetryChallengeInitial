@@ -9,5 +9,8 @@ namespace GuestManagement.Infrastructure.Configuration
         public AzureOptions AzureOptions { get; set; }
 
         public RedisOptions RedisOptions { get; set; }  
+
+        public RabbitMQOptions RabbitMQOptions {get; set;}     
+        
     }
 }

@@ -33,6 +33,11 @@ namespace GuestManagement.API
             this.configuration = configuration;
             ApplicationFeatures = configuration.GetSection("Features").Get<Features>();
         }
+
+        private void MapApplicationFlags(){
+              ApplicationFlags.SqlLiteEnabled =  bool.Parse(Environment.GetEnvironmentVariable("RG_SqlLite_Enabled",
+               EnvironmentVariableTarget.Process));
+        }
         public void ConfigureServices(IServiceCollection services)
         {
 
