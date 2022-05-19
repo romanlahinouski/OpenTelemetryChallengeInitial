@@ -34,13 +34,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="custom-correlation.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\GuestManagement.Application\GuestManagement.Application.csproj" />
     <ProjectReference Include="..\GuestManagement.Infrastructure\GuestManagement.Infrastructure.csproj" />

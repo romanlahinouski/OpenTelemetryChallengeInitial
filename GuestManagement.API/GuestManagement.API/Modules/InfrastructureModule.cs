@@ -12,6 +12,7 @@ using GuestManagement.Infrastructure.Services.Events;
 using GuestManagement.Domain.Guests.IntergrationEvents;
 using GuestManagement.Infrastructure.Configuration;
 using GuestManagement.Infrastructure.Services.Mappings;
+using GuestManagement.Infrastructure.Services.Messages;
 
 namespace GuestManagement.API.Modules
 {
@@ -43,6 +44,13 @@ namespace GuestManagement.API.Modules
                 builder.RegisterType<CosmosGuestRepository>().As<IGuestRepository>();
 
                 builder.RegisterType<AzureEventBus>().As<IEventBus>();
+            }
+
+            if(Startup.ApplicationFeatures.RabbitMQOptions.Enabled)
+            {
+              builder.RegisterType<RabbitMQMessageSender>()
+                .As<MessageSender>()
+                .SingleInstance();
             }
         
             builder.RegisterType<UnitOfWork>()

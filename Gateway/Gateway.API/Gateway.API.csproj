@@ -5,7 +5,6 @@
     <StartupObject>Gateway.Program</StartupObject>
     <UserSecretsId>e0c491cd-2abf-4ecd-a91c-22fe4777e61e</UserSecretsId>
     <AssemblyName>Gateway.API</AssemblyName>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 

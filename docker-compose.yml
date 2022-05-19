@@ -35,6 +35,24 @@ services:
           - ASPNETCORE_ENVIRONMENT=Development
     volumes: 
           - "${HOME}/.aspnet/https:/root/.aspnet/https/"
+  rabbitmq:
+    image: rabbitmq
+    deploy:
+      replicas: 1
+      placement:
+        max_replicas_per_node: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure 
+    ports:
+          - 5672:5672/tcp
+    environment: 
+          - ASPNETCORE_ENVIRONMENT=Development
+          - RABBITMQ_DEFAULT_VHOST=restaurantguide
+          - RABBITMQ_DEFAULT_USER=root
+          - RABBITMQ_DEFAULT_PASS=password
   machineagent:
     image: 46105558198586288857/restaurantguide:machineagent
     deploy:

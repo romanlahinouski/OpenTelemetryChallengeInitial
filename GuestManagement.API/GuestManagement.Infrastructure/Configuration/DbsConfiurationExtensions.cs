@@ -11,10 +11,15 @@ namespace GuestManagement.Infrastructure.Configuration
     {
       
         public static void ConfigureDbs(this IServiceCollection services, IConfiguration configuration, ILogger<GuestDbContext> logger)
-        {
-            services.AddDbContextPool<GuestDbContext>(builder => {
-               string sqlServerLocation = Environment.GetEnvironmentVariable("MySQL_Server", EnvironmentVariableTarget.Process);
+        {          
+
+           string sqlServerLocation = Environment.GetEnvironmentVariable("MySQL_Server", EnvironmentVariableTarget.Process);
                string fullConnString = configuration["ConnectionStrings:GuestDbConnectionString"];
+
+          if(!ApplicationFlags.SqlLiteEnabled)
+          { 
+            services.AddDbContextPool<GuestDbContext>(builder => {
+                         
                if(String.IsNullOrEmpty(sqlServerLocation)){
                  fullConnString = "Server=localhost;" + fullConnString;
                }
@@ -26,6 +31,14 @@ namespace GuestManagement.Infrastructure.Configuration
 
                 logger.LogInformation($"Connection string is {fullConnString}");
             });
+          }
+
+          else{
+              services.AddDbContext<GuestDbContext>(builder => {
+
+                 builder.UseSqlite(fullConnString);
+              });
+          }
 
 
         }

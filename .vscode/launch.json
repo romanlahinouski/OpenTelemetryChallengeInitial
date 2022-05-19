@@ -20,8 +20,6 @@
                 "/Views": "${workspaceFolder}/Views"
             }
         },
-
-
         {
             "name": "GuestManagement",
             "type": "coreclr",
@@ -43,6 +41,12 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        },
+        {
+            "name": "Attach to .NET Functions",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:azureFunctions.pickProcess}"
         }
     ]
 }
