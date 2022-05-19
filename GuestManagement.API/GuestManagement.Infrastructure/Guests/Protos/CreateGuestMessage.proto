@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+
+option csharp_namespace = "GuestManagement.Infrastructure.Guests.Protos";
+
+
+message CreateGuestRequest{
+	string FirstName = 1;
+    string LastName = 2;
+    string PhoneNumber = 3;
+    string Email = 4;
+      google.protobuf.Timestamp DateOfBirth = 5;
+}
