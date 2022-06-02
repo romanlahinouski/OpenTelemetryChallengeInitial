@@ -1,4 +1,5 @@
 ﻿using GuestManagement.Domain.Guests;
+using GuestManagement.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -16,7 +17,10 @@ namespace GuestManagement.Infrastructure.Guests
         public GuestRepository(GuestDbContext guestDbContext,
             IConfiguration configuration)          
         {
-            this.guestDbContext = guestDbContext;  
+            this.guestDbContext = guestDbContext; 
+
+            if(ApplicationFlags.SqlLiteEnabled)
+             guestDbContext.Database.EnsureCreated();
         }
 
         public void Add(Guest guest)
