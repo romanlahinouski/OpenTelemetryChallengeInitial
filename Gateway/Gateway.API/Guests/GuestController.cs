@@ -11,7 +11,6 @@ using Gateway.Application.Guests.Queries;
 
 namespace Gateway.Guests
 {
-    [Authorize(Policy ="GroupUsers")]
     [Route("api/[controller]/")]  
     [Produces("application/json")]
     [ApiController]
@@ -60,7 +59,6 @@ namespace Gateway.Guests
         
 
         [HttpDelete]
-        [Authorize(Policy ="GroupAdmins")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]    
         public Task<ActionResult> Delete(){
@@ -71,7 +69,6 @@ namespace Gateway.Guests
 
 
         [HttpGet]
-        [Authorize(Policy ="GroupAdmins")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]    
         public async Task<ActionResult> Get(int guestsNumber){

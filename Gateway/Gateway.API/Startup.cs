@@ -38,8 +38,6 @@ namespace Gateway
 
             services.AddHttpContextAccessor();
  
-            services.ConfigureSecurity(configuration);
-
             services.ConfigureTelemetry(configuration);
 
             services.AddControllers(
@@ -86,9 +84,6 @@ namespace Gateway
 
             app.UseMiddleware<HttpRequestLogginMiddleware>();
 
-            if (!AppConfig.GetAzureOptions().IdentityConfiguration.IsEnabled)
-                app.UseIdentityServer();
-            
             app.UseSwagger();
 
 
@@ -98,16 +93,11 @@ namespace Gateway
             });
 
 
-            app.UseRequestLocalization(new string[] { "pl-PL" });
+            app.UseRequestLocalization(new string[] { "en-US" });
 
             app.UseRouting();
 
-            //app.UseHttpsRedirection();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-
+      
             app.UseEndpoints(endpoints =>
             {
 
