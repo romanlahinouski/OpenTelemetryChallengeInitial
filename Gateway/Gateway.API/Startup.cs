@@ -92,7 +92,7 @@ namespace Gateway
             });
 
 
-            app.UseRequestLocalization(new string[] { "pl-PL" });
+            app.UseRequestLocalization(new string[] { "en-US" });
 
             app.UseRouting();
 
