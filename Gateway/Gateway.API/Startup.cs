@@ -33,9 +33,6 @@ namespace Gateway
             ILoggerFactory loggerFactory
               = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
-
-            var orderfulfilmentServiceUrl = new Uri(configuration["ConnectionStrings:OrderFulfilementService"]);
-
             var guestManagementServiceUrl = new Uri(configuration["ConnectionStrings:GuestManagementService"]);
 
             services.AddHttpContextAccessor();

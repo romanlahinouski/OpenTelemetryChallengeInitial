@@ -1,9 +1,21 @@
-outputFolder="/tmp/GM/"
-runtime=osx-x64 
+outputFolder="/tmp"
+runtime=osx-x64
+initialFolder=$(pwd)
+gatewayOutputFolder="$outputFolder/Gateway"
+gmOutputFolder="$outputFolder/GuestManagement"
+
+echo "$gatewayOutputFolder"
+echo "$gmOutputFolder"
 
 cd GuestManagement.API/
-dotnet clean
-dotnet publish  -o $outputFolder --runtime $runtime --self-contained true  
-cd $outputFolder
-chmod 777 GuestManagement.API
-./GuestManagement.API
+dotnet publish  -o $gmOutputFolder --runtime $runtime --self-contained true  
+cd $gmOutputFolder
+chmod 777 GuestManagement.API 
+./GuestManagement.API &
+
+cd $initialFolder
+cd Gateway/Gateway.API
+dotnet publish  -o $gatewayOutputFolder --runtime $runtime --self-contained true  
+cd $gatewayOutputFolder
+chmod 777 Gateway.API
+./Gateway.API & 

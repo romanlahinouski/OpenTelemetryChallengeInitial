@@ -9,12 +9,12 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Gateway/Gateway.API/bin/Debug/netcoreapp3.1/Gateway.API.dll",
+            "program": "${workspaceFolder}/Gateway/Gateway.API/bin/Debug/netcoreapp3.1/osx-x64/Gateway.API.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Gateway/Gateway.API/bin/Debug/netcoreapp3.1",
+            "cwd": "${workspaceFolder}/Gateway/Gateway.API/bin/Debug/netcoreapp3.1/osx-x64",
             "stopAtEntry": false,
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Debug"
+               
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -30,7 +30,7 @@
             "cwd": "${workspaceFolder}/GuestManagement.API/GuestManagement.API/bin/Debug/netcoreapp3.1/",
             "stopAtEntry": false,
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+               
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
