@@ -1,0 +1,14 @@
+﻿syntax="proto3";
+
+import "google/protobuf/empty.proto";
+import "Guests/Protos/GuestRegistrationMessage.proto";
+
+option csharp_namespace = "GuestManagement.Infrastructure.Guests.Protos";
+
+
+service RestaurantManagementService {
+
+	rpc RegisterGuest(GuestRegistrationRequest) returns (google.protobuf.Empty);
+}
+
+

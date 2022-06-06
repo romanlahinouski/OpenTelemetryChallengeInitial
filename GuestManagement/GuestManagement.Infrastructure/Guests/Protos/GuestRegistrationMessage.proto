@@ -1,0 +1,10 @@
+﻿syntax="proto3";
+
+option csharp_namespace = "GuestManagement.Infrastructure.Guests.Protos";
+
+
+message GuestRegistrationRequest{
+	int32 GuestId = 1;
+	int32 RestaurantId = 2;
+	string GuestEmail = 3;
+}
