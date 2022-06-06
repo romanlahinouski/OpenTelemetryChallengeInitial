@@ -1,20 +1,42 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This application is the target for OTel instrumentation
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Folder structure
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+- GuestManagement
+- Gateway
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+both are separate applications running on Asp Net Core 3.1. Each of the applications is multilayer to ease development and maintenance. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Build Project
+1.	Open the main folder for the project
+2.	Run ./BuildAndRun.sh
+3.	Allow the application to accept incoming connections
+
+By default, the script builds both services to /tmp/<service name> directory and runs them. 
+
+# Checking the result
+  
+  In the console from where you have started the script you should be able to see the following output being logged
+  
+>>Activity.TraceId:          8c401eb119367613a729198abea26fc3
+>>Activity.SpanId:           e94107fff62cf702
+>>Activity.TraceFlags:           Recorded
+>>Activity.ActivitySourceName: OpenTelemetry.Instrumentation.AspNetCore
+>>Activity.DisplayName: api/Guest
+>>Activity.Kind:        Server
+>>Activity.StartTime:   2022-06-06T07:18:39.5749930Z
+>>Activity.Duration:    00:00:02.6251420
+>>Activity.Tags:
+    >>http.host: localhost:9001
+    >>http.method: POST
+    >>http.target: /api/Guest
+    >>http.url: http://localhost:9001/api/Guest
+    >>http.user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36
+    >>http.route: api/Guest
+    >>http.status_code: 201
+   >>StatusCode : UNSET
+>>Resource associated with Activity:
+    >>service.name: GW
+    >>service.version: 1.0.0
+    >>service.instance.id: 63b674d8-4ff4-4205-9322-db0d2f7c0f15
