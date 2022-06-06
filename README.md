@@ -1,20 +1,33 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This application is target for OTel instumentation
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Folder structure
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+- GuestManagement
+- Gateway
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+both are separate application running on Asp Net Core 3.1. Each of the applications is multilayer to ease development and maintence. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Build Project
+1.	Open main folder for the project
+2.	Run ./BuildAndRun.sh
+
+By default script builds both services to /tmp/<service name> directory and runs them. 
+
+# Make your changes
+  
+Changes required for the challenge will be made on the API level, as it's the place where application startup is managed, also serving as the place where we configure packages.
+ 
+GuestManagement API project location:
+  - GuestManagement/GuestManagement.API/
+ 
+Gateway API project location:
+  - Gateway/Gateway.API/
+  
+ To add nuget package run this command: 
+  
+  dotnet add package. 
+  
+ For example: dotnet add package Microsoft.EntityFrameworkCore
+  
+ Then run ./RebuildAndRun.sh
