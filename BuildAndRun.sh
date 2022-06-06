@@ -7,7 +7,7 @@ gmOutputFolder="$outputFolder/GuestManagement"
 echo "$gatewayOutputFolder"
 echo "$gmOutputFolder"
 
-cd GuestManagement.API/
+cd GuestManagement/
 dotnet publish  -o $gmOutputFolder --runtime $runtime --self-contained true  
 cd $gmOutputFolder
 chmod 777 GuestManagement.API 
