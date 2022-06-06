@@ -19,6 +19,8 @@ By default, the script builds both services to /tmp/<service name> directory and
   
   In the console from where you have started the script you should be able to see the following output being logged
   
+  
+```  
 Activity.TraceId:          8c401eb119367613a729198abea26fc3
 Activity.SpanId:           e94107fff62cf702
 Activity.TraceFlags:           Recorded
@@ -37,6 +39,6 @@ Activity.Tags:
     http.status_code: 201
     StatusCode : UNSET
 Resource associated with Activity:
-    service.name: GW
-    service.version: 1.0.0
+    service.name: GW    service.version: 1.0.0
     service.instance.id: 63b674d8-4ff4-4205-9322-db0d2f7c0f15
+```
