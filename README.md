@@ -28,7 +28,7 @@ Gateway API project location:
   
  To add nuget package run this command: 
   
-  dotnet add package. 
+  ``` dotnet add package ``` 
   
  For example, ``` dotnet add package Microsoft.EntityFrameworkCore ```
   
