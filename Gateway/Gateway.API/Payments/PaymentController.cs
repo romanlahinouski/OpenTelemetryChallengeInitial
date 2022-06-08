@@ -11,6 +11,7 @@ namespace Gateway.Payments
 
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Obsolete]
     public class PaymentController : ControllerBase
     {
         private readonly IMediator mediator;
