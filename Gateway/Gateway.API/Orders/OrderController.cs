@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Gateway.Application.Orders.Commands;
 using Gateway.Application.Orders.Queries;
+using System;
 
 namespace Gateway.Orders.Administration
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
     [UserNotRegisteredExceptionFilter]
+    [Obsolete]
     public class OrderController : ControllerBase
     {
         private readonly IMediator mediator;
