@@ -32,3 +32,5 @@ Gateway API project location:
   
  For example, ``` dotnet add package Microsoft.EntityFrameworkCore ```
   
+  > :warning: **After required changes were made, please, clean applications target folders, you can find these locations in the BuildAndRun script**
+  
