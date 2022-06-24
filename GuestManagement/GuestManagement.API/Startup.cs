@@ -15,9 +15,7 @@ using GuestManagement.Infrastructure.Services.Events;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using GuestManagement.API.ValueProviders;
-using OpenTelemetry.Trace;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Exporter;
+
 
 namespace GuestManagement.API
 {
@@ -48,23 +46,7 @@ namespace GuestManagement.API
             string oTelCollectorEndpoint = configuration["Monitoring:OTelCollectorEndpoint"];
 
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-
-            services.AddOpenTelemetryTracing(config =>
-            {
-                config.AddConsoleExporter()
-                .AddOtlpExporter(opt =>
-                {
-                    opt.Endpoint = new Uri(oTelCollectorEndpoint);
-                    opt.Protocol = OtlpExportProtocol.Grpc;
-                })
-                .AddSource()
-                .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                    .AddService(serviceName: serviceName,
-                    serviceVersion: serviceVersion))
-                .AddAspNetCoreInstrumentation()
-                .AddHttpClientInstrumentation();
-
-            });
+           
             services.AddControllers(
                 options =>
                 {
