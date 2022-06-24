@@ -9,9 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
-using OpenTelemetry.Exporter;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
 
 namespace Gateway.API.Configuration
 {
@@ -130,24 +127,6 @@ namespace Gateway.API.Configuration
             string serviceName = configuration["Monitoring:ServiceName"];
             string serviceVersion = configuration["Monitoring:ServiceVersion"];
             string otlpEndpoint = configuration["Monitoring:OTelCollectorEndpoint"];
-
-            services.AddOpenTelemetryTracing(
-                traceBuilder =>
-                {
-                    traceBuilder.AddConsoleExporter();
-                    traceBuilder.AddOtlpExporter( builder =>{
-                        builder.Endpoint = new Uri(otlpEndpoint);
-                        builder.Protocol = OtlpExportProtocol.Grpc;
-                    });
-                    
-                    traceBuilder.SetResourceBuilder(ResourceBuilder.CreateDefault()
-                    .AddService(serviceName,serviceVersion: serviceVersion));
-                    //traceBuilder.AddSource(serviceName);
-
-                    traceBuilder.AddHttpClientInstrumentation();
-                    traceBuilder.AddAspNetCoreInstrumentation();
-                }
-            );
         }
 
 
